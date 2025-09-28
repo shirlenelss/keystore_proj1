@@ -1,2 +1,0 @@
-2025-09-28 20:53:22,045 - AUDIT - INFO - {"timestamp": "2025-09-28T20:53:22.045179", "action": "password_generated", "user": "system", "details": {"length": 16}}
-2025-09-28 20:53:22,045 - AUDIT - INFO - {"timestamp": "2025-09-28T20:53:22.045524", "action": "password_validated", "user": "system", "details": {"valid": true, "score": 90, "issues_count": 0}}
