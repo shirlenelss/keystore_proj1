@@ -1,0 +1,98 @@
+{
+  "timestamp": "2025-09-28T20:57:35.447677",
+  "directory": ".",
+  "summary": {
+    "total_files_scanned": 68,
+    "secret_findings": 10,
+    "permission_issues": 3,
+    "high_severity_issues": 3,
+    "scan_duration_seconds": 0.011374,
+    "overall_risk": "high"
+  },
+  "findings": {
+    "secrets": {
+      "demo.py": [
+        {
+          "type": "password",
+          "line": 126,
+          "match": "password = \"password123\""
+        },
+        {
+          "type": "password",
+          "line": 128,
+          "match": "password: '{weak_password}'"
+        },
+        {
+          "type": "aws_access_key",
+          "line": 157,
+          "match": "AKIAIOSFODNN7EXAMPLE"
+        },
+        {
+          "type": "database_url",
+          "line": 154,
+          "match": "postgresql://user:secret_password@localhost:5432/mydb"
+        }
+      ],
+      "tests/test_security_ops.py": [
+        {
+          "type": "password",
+          "line": 45,
+          "match": "password = \"StrongPass123!@#\""
+        },
+        {
+          "type": "password",
+          "line": 57,
+          "match": "password = \"password\""
+        },
+        {
+          "type": "password",
+          "line": 65,
+          "match": "password = \"TestPassword123!\""
+        },
+        {
+          "type": "database_url",
+          "line": 100,
+          "match": "postgresql://user:password@localhost/db"
+        }
+      ],
+      "src/keystore_manager/security_ops.py": [
+        {
+          "type": "private_key",
+          "line": 272,
+          "match": "-----BEGIN OPENSSH PRIVATE KEY-----"
+        },
+        {
+          "type": "ssh_private_key",
+          "line": 272,
+          "match": "-----BEGIN OPENSSH PRIVATE KEY-----"
+        }
+      ]
+    },
+    "permissions": {
+      "checked_files": 68,
+      "issues": [
+        {
+          "file": "webapp_keys/jwt_signing_public.pem",
+          "issue": "sensitive_file_world_readable",
+          "permissions": "644",
+          "severity": "high"
+        },
+        {
+          "file": "webapp_keys/data_encryption_public.pem",
+          "issue": "sensitive_file_world_readable",
+          "permissions": "644",
+          "severity": "high"
+        },
+        {
+          "file": "keystore/test_key_public.pem",
+          "issue": "sensitive_file_world_readable",
+          "permissions": "644",
+          "severity": "high"
+        }
+      ],
+      "high_severity": 3,
+      "medium_severity": 0,
+      "low_severity": 0
+    }
+  }
+}
